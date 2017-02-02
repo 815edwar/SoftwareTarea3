@@ -8,4 +8,11 @@ from datetime import *
 import datetime
 
 # Billetera Electronica
-# 
+# Esta objeto permite llevar un registro de saldo para una
+# persona, asi como el hisotorial de transacciones de debito
+# y credito correspondientes a dicha persona
+class BilleteraElectronica(object):
+	# Se define el constructor del objeto, donde se inicializan
+	# todos sus atributos
+	def __init__(self, Id = id(self)):
+		self.Id = Id
