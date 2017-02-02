@@ -6,6 +6,7 @@
 
 from datetime import *
 import datetime
+import time
 
 class Debito(object):
 	def __init__(self, monto, idLocal, fecha):
@@ -21,7 +22,7 @@ class Debito(object):
 class BilleteraElectronica(object):
 	# Se define el constructor del objeto, donde se inicializan
 	# todos sus atributos
-	def __init__(self, Nombre, Apellido, ci, pin = 1234):
+	def __init__(self, Nombre, Apellido, ci, pin):
 		self.id = id(self)
 		self.nombre = Nombre
 		self.apellido = Apellido
@@ -29,7 +30,7 @@ class BilleteraElectronica(object):
 		self.pin = pin
 		self.debitos = []
 
-	def consumir(self, monto, idLocal, fecha = time.strftime("%c"), pin):
+	def consumir(self, monto, idLocal, pin, fecha = time.strftime("%c")):
 		try:
 			assert(self.pin == pin)
 			if monto <= self.saldo:
