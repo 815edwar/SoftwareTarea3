@@ -8,12 +8,18 @@ from datetime import *
 import datetime
 import time
 
-
 class Recarga(object):
 	def __init__(self, monto, fecha):
 		self.id = id(self)
 		self.monto = monto
 		self.fecha = fecha
+
+class Debito(object):
+	def __init__(self, monto, idLocal, fecha):
+		self.id = id(self)
+		self.monto = monto
+		self.fecha = fecha
+		self.idLocal = idLocal
 
 # Billetera Electronica
 # Esta objeto permite llevar un registro de saldo para una
@@ -37,6 +43,18 @@ class BilleteraElectronica(object):
 	def obtenerSaldo():
 		return self.saldo
 
+	def consumir(self, monto, idLocal, pin, fecha = time.strftime("%c")):
+		try:
+			assert(self.pin == pin)
+			if monto <= self.saldo:
+				self.saldo -= monto
+				self.ListaDebitos.append( Debito(monto, idLocal, fecha) )
+				print("Se ha realizado el consumo exitosamente.")
+			else:
+				print("Su saldo es insuficiente para realizar el consumo. Recargue saldo y vuelva a intentar.")
+		except:
+			print("Ha ingresado un pin invalido.")
+	
 	def recargar(self, monto, fecha = time.strftime("%c")):
 		self.ListaRecargas.append( Recarga(monto, fecha) )
 		print("Su recarga se ha completado exitosamente")
