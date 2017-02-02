@@ -14,5 +14,5 @@ import datetime
 class BilleteraElectronica(object):
 	# Se define el constructor del objeto, donde se inicializan
 	# todos sus atributos
-	def __init__(self, Id = id(self)):
-		self.Id = Id
+	def __init__(self):
+		self.id = id(self)
