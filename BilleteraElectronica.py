@@ -47,8 +47,8 @@ class BilleteraElectronica(object):
 		try:
 			assert(self.pin == pin)
 			if monto <= self.saldo:
-				self.saldo -= monto
 				self.ListaDebitos.append( Debito(monto, idLocal, fecha) )
+				self.saldo -= monto
 				print("Se ha realizado el consumo exitosamente.")
 			else:
 				print("Su saldo es insuficiente para realizar el consumo. Recargue saldo y vuelva a intentar.")
@@ -57,4 +57,5 @@ class BilleteraElectronica(object):
 	
 	def recargar(self, monto, fecha = time.strftime("%c")):
 		self.ListaRecargas.append( Recarga(monto, fecha) )
+		self.saldo += monto
 		print("Su recarga se ha completado exitosamente")
