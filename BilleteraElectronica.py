@@ -22,13 +22,15 @@ class Debito(object):
 class BilleteraElectronica(object):
 	# Se define el constructor del objeto, donde se inicializan
 	# todos sus atributos
-	def __init__(self, Nombre, Apellido, ci, pin):
+	def __init__(self, Nombre, Apellido, ci, pin, saldo = 0):
 		self.id = id(self)
 		self.nombre = Nombre
 		self.apellido = Apellido
 		self.cedula = ci
 		self.pin = pin
-		self.debitos = []
+		self.ListaRecargas = []
+		self.ListaDebitos = []
+		self.saldo = saldo
 
 	def consumir(self, monto, idLocal, pin, fecha = time.strftime("%c")):
 		try:
@@ -41,3 +43,7 @@ class BilleteraElectronica(object):
 				print("Su saldo es insuficiente para realizar el consumo. Recargue saldo y vuelva a intentar.")
 		except:
 			print("Ha ingresado un pin invalido.")
+	
+	# Metodo que devuelve el saldo actual de la billetera
+	def obtenerSaldo():
+		return self.saldo
