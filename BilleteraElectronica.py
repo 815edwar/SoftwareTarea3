@@ -7,6 +7,13 @@
 from datetime import *
 import datetime
 
+class Debito(object):
+	def __init__(self, monto, idLocal, fecha):
+		self.id = id(self)
+		self.monto = monto
+		self.fecha = fecha
+		self.idLocal = idLocal
+
 # Billetera Electronica
 # Esta objeto permite llevar un registro de saldo para una
 # persona, asi como el hisotorial de transacciones de debito
@@ -21,3 +28,15 @@ class BilleteraElectronica(object):
 		self.cedula = ci
 		self.pin = pin
 		self.debitos = []
+
+	def consumir(self, monto, idLocal, fecha = time.strftime("%c"), pin):
+		try:
+			assert(self.pin == pin)
+			if monto <= self.saldo:
+				self.saldo -= monto
+				self.debitos.append( Debito(monto, idLocal, fecha) )
+				print("Se ha realizado el consumo exitosamente.")
+			else:
+				print("Su saldo es insuficiente para realizar el consumo. Recargue saldo y vuelva a intentar.")
+		except:
+			print("Ha ingresado un pin invalido.")
