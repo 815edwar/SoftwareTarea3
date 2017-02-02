@@ -5,7 +5,7 @@ import time
 from Tarea3 import *
 import sys
 
-class SaldoTester(unittest.TestCase):
+class ConsumirTester(unittest.TestCase):
     
     def setUp(self):
         self.wallet = BilleteraElectronica("D","D",1,4321,5000)
