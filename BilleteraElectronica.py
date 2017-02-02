@@ -20,3 +20,8 @@ class BilleteraElectronica(object):
 		self.apellido = Apellido
 		self.cedula = ci
 		self.pin = pin
+		self.ListaRecargas = []
+
+	
+
+
