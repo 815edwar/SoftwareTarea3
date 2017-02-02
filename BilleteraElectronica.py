@@ -24,5 +24,6 @@ class BilleteraElectronica(object):
 		self.ListaDebitos = []
 		self.saldo = saldo
 
+	# Metodo que devuelve el saldo actual de la billetera
 	def obtenerSaldo():
 		return self.saldo
