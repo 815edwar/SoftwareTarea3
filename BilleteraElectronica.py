@@ -21,6 +21,7 @@ class BilleteraElectronica(object):
 		self.cedula = ci
 		self.pin = pin
 		self.ListaRecargas = []
+		self.debitos = []
 		self.saldo = saldo
 
 	def obtenerSaldo():
